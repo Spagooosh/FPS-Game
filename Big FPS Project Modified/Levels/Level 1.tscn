@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Black_Tiles_05_1K_Roughness.png" type="Texture" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.894531, 0.800186, 0.800186, 1 )
+roughness_texture = ExtResource( 2 )
+uv1_scale = Vector3( 3, 3, 2 )
+uv1_triplanar = true
+
+[node name="Level 1" type="Spatial"]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Floor" type="RigidBody" parent="Spatial"]
+transform = Transform( -2.26803, 0, 0, 0, -2.26803, 0, 0, 0, -2.26803, 0, -1.82184, 0 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Floor"]
+transform = Transform( 40.092, 0, 0, 0, 1, 0, 0, 0, 40.8804, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Floor/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Floor2" type="RigidBody" parent="Spatial"]
+transform = Transform( -2.26803, 0, 0, 0, 3.69509e-07, 2.26803, 0, -2.26803, 3.69509e-07, 0, 88.646, 94.6032 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Floor2"]
+transform = Transform( 40.092, 0, 0, 0, 1, 0, 0, 0, 40.8804, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Floor2/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Floor3" type="RigidBody" parent="Spatial"]
+transform = Transform( -2.26803, 0, 0, 0, 3.69509e-07, 2.26803, 0, -2.26803, 3.69509e-07, 0, 88.646, -94.655 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Floor3"]
+transform = Transform( 40.092, 0, 0, 0, 1, 0, 0, 0, 40.8804, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Floor3/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, -8.88178e-16, 1, 0, -0.970642, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Floor4" type="RigidBody" parent="Spatial"]
+transform = Transform( 4.47827e-07, -2.268, -9.91374e-08, 0, -9.91374e-08, 2.268, -2.3, -4.41596e-07, -1.93028e-14, -92.551, 88.646, 0.169334 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Floor4"]
+transform = Transform( 40.092, 0, 0, 0, 1, 0, 0, 0, 40.8804, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Floor4/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Floor5" type="RigidBody" parent="Spatial"]
+transform = Transform( 4.47827e-07, -2.268, -9.91374e-08, 0, -9.91374e-08, 2.268, -2.3, -4.41596e-07, -1.93028e-14, 88.8658, 88.646, 0.169334 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Floor5"]
+transform = Transform( 40.092, 0, 0, 0, 1, 0, 0, 0, 40.8804, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Floor5/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.365995, 0, 0, 0, 0.365995, 0, 0, 0, 0.365995, 79.1888, 1.23149, -83.2567 )

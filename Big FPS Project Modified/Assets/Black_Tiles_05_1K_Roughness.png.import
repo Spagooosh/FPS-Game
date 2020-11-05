@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Black_Tiles_05_1K_Roughness.png-02adf4c4f3e4d815a0e9a5f31a3541fb.s3tc.stex"
+path.etc2="res://.import/Black_Tiles_05_1K_Roughness.png-02adf4c4f3e4d815a0e9a5f31a3541fb.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Assets/Black_Tiles_05_1K_Roughness.png"
+dest_files=[ "res://.import/Black_Tiles_05_1K_Roughness.png-02adf4c4f3e4d815a0e9a5f31a3541fb.s3tc.stex", "res://.import/Black_Tiles_05_1K_Roughness.png-02adf4c4f3e4d815a0e9a5f31a3541fb.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=1
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

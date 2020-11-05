@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Pause/Pause.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World.gd" type="Script" id=3]
+[ext_resource path="res://Assets/BadGuy/BadGuy.tscn" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0823529, 0.596078, 0.305882, 1 )
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 100, 1, 100 )
+
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="CubeMesh" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.341176, 0.411765, 0.788235, 1 )
+
+[node name="World" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Ground" type="RigidBody" parent="."]
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+transform = Transform( 36.4746, 0, 0, 0, 1, 0, 0, 0, 33.887, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/CollisionShape"]
+transform = Transform( 1.05845, 0, 0, 0, 1.05845, 0, 0, 0, 1.05845, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11906, 0 )
+
+[node name="Pause" parent="." instance=ExtResource( 2 )]
+
+[node name="BadGuy" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1513, 4.75508, 0 )
+
+[node name="GiantWall" type="StaticBody" parent="."]
+transform = Transform( 15.394, 0, 0, 0, 9.44162, 0, 0, 0, 1, 5.02859, 11.124, 30.1733 )
+
+[node name="CollisionShape" type="CollisionShape" parent="GiantWall"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="GiantWall"]
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="Skybox" type="StaticBody" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Skybox"]
+shape = SubResource( 8 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Skybox"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -100.941, 95.6105, 5 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Skybox"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 99.1142, 99.6999, 0 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Skybox"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 99.3043, 100.082 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Skybox"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 98.0718, -97.0953 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Skybox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 197.143, 0 )
+shape = SubResource( 8 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 10.8573, 0, 0, 0, 2.14462, 0, 0, 0, 1, 0, 3.04174, 5.78298 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
