@@ -1,0 +1,408 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://KinematicBody.gd" type="Script" id=1]
+[ext_resource path="res://shotgunmodwl.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Grappling_hook_shoot (1).wav" type="AudioStream" id=3]
+[ext_resource path="res://grapple gun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://cyZUtxf_d.webp" type="Texture" id=5]
+[ext_resource path="res://shotgunhandle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Shotgun-SoundBible.com-862990674.wav" type="AudioStream" id=7]
+[ext_resource path="res://shell.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Reloading-Magazine-www.fesliyanstudios.com.wav" type="AudioStream" id=9]
+[ext_resource path="res://shotgun-spas_12-RA_The_Sun_God-503834910.wav" type="AudioStream" id=10]
+[ext_resource path="res://flamer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Gun1/Test.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Gun2/Test2.tscn" type="PackedScene" id=13]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.72549, 0.72549, 0.72549, 1 )
+metallic = 1.0
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "death"
+length = 1000.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.00459921, 0.278704, -0.106365 ), Vector3( 0.00459921, -0.190526, -0.106365 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 44.07, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 500.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.777001, 0 ), Vector3( -22.9988, -0.8441, 0.32982 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.358145, -0.0280073, -0.050496 ), Vector3( -0.358145, -0.0280073, -0.0149423 ), Vector3( -0.358145, -0.0280073, -0.050496 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 4.55
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand3/Spatial/Spatial/hand2:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 1.9, 2, 2.1, 2.4, 2.5, 2.6, 2.9, 3, 3.1, 3.4, 3.5, 3.6, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 3.79555, -0.164742, 2.11361 ), Vector3( 5.16834, -0.067162, 2.20742 ), Vector3( 3.79555, -0.164742, 2.11361 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hand3/Spatial/Spatial/hand2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.4, 0.6, 0.8, 0.9, 1.1, 1.3, 1.4, 1.6, 1.8, 1.9, 2.1, 2.3, 2.4, 2.6, 2.8, 2.9, 3.1, 3.3, 3.4, 3.6, 3.8, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -3.84776, 77.5151, 0.529428 ), Vector3( -32.5909, 76.8458, 2.08751 ), Vector3( -3.84776, 77.5151, 0.529428 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hand3/Spatial/Spatial/hand2/Spatial3:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8, 0.9, 1.1, 1.2, 1.3, 1.4, 1.6, 1.7, 1.8, 1.9, 2.1, 2.2, 2.3, 2.4, 2.6, 2.7, 2.8, 2.9, 3.1, 3.2, 3.3, 3.4, 3.6, 3.7, 3.8, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.203118, 0.0750241, -0.337364 ), Vector3( 0.234769, 0.295521, -0.456107 ), Vector3( 0.328664, 0.0707813, -0.37403 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hand3/Spatial/Spatial:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 4.1, 4.28, 4.44 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.000428915, -0.0204139, 0.421566 ), Vector3( 0.0218201, 0.00371584, -0.0757949 ), Vector3( 0.000428915, -0.0204139, 0.421566 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hand3:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.52 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.777001, 0 ), Vector3( 0, -0.777001, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -24.977 ), Vector3( 0, 0, -24.977 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.01, 0.06, 0.26 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.777001, 0 ), Vector3( 49.1739, -1.18855, -0.899428 ), Vector3( 0, -0.777001, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hand3:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.09, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.460943, -0.284031, -0.275931 ), Vector3( 0.460943, -0.284031, -0.142163 ), Vector3( 0.460943, -0.284031, -0.183511 ), Vector3( 0.460943, -0.284031, -0.275931 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hand3/Spatial/Spatial:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.39, 0.56, 0.76 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.000428915, -0.0204139, 0.421566 ), Vector3( 0.0220998, 0.00403136, -0.0822985 ), Vector3( 0.000428915, -0.0204139, 0.421566 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hand3/Spatial/Spatial2:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.54, 0.63, 0.74 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.020395, 0.0255152, -0.525996 ), Vector3( 0.020395, 0.0255152, -0.525996 ), Vector3( -1.87245, 0.0264449, -0.598736 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.4, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.777, 0 ), Vector3( 5.92246, -33.7426, -80.0756 ), Vector3( -9.21083, 91.0149, -81.4685 ), Vector3( 0, -0.777, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+
+[sub_resource type="CapsuleShape" id=12]
+radius = 0.27209
+
+[node name="player" type="KinematicBody" groups=[
+"Weapon",
+]]
+script = ExtResource( 1 )
+
+[node name="Head" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00459921, 0.278704, -0.106365 )
+fov = 81.0
+
+[node name="MeshInstance" parent="Head" instance=ExtResource( 4 )]
+transform = Transform( -0.299566, 0, 0.0161346, 0, 0.3, 0, -0.0161346, 0, -0.299566, -0.358145, -0.0280073, -0.050496 )
+
+[node name="ghook" type="Spatial" parent="Head/MeshInstance"]
+transform = Transform( -3.33333, 0, 1.02818e-06, 0, 3.33333, 0, -1.02818e-06, 0, -3.33333, 0.137183, 0.0854746, 0.729559 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head/MeshInstance/ghook"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.391343, 0, -0.0210778 )
+stream = ExtResource( 3 )
+unit_db = -5.148
+
+[node name="grapplecast" type="RayCast" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0365838, -0.276242, -1.05167 )
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, -69 )
+collide_with_areas = true
+
+[node name="bonk" type="RayCast" parent="Head/grapplecast"]
+transform = Transform( 0.999686, 0, 0.0250429, 0, 1, 0, -0.0250429, 0, 0.999686, 0.0423143, 0.135261, 1.03302 )
+enabled = true
+cast_to = Vector3( 0, 1, 0 )
+
+[node name="Gun1" parent="Head" instance=ExtResource( 12 )]
+transform = Transform( 0.993182, 0.00340412, 0.116516, 0.000593063, 0.999413, -0.0342541, -0.116564, 0.0340897, 0.992597, 0.351, -0.318, -0.78 )
+visible = false
+
+[node name="Gun2" parent="Head" instance=ExtResource( 13 )]
+transform = Transform( 0.706252, 0, 0, 0, 0.706252, 0, 0, 0, 0.706252, 0.038, -0.317, -0.626 )
+visible = false
+
+[node name="hand3" type="Spatial" parent="Head"]
+transform = Transform( 0.999907, 2.32831e-09, -0.0135608, 0.000601451, 0.999016, 0.0443482, 0.0135474, -0.0443523, 0.998923, 0.460943, -0.284031, -0.275931 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Head/hand3"]
+transform = Transform( 0.111478, -7.06657e-05, 0.086224, 6.3526e-05, 0.0999997, -4.20213e-06, -0.0156115, 1.07437e-05, 0.493884, -0.0778863, -0.0702447, 0.047372 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Spatial" parent="Head/hand3" instance=ExtResource( 2 )]
+transform = Transform( -0.499362, 0.000147103, -0.0245149, -0.00104016, 0.499414, 0.0241846, 0.0163898, 0.0108467, -0.223279, -0.131392, 0.0780758, -0.354972 )
+
+[node name="Spatial" parent="Head/hand3/Spatial" instance=ExtResource( 6 )]
+transform = Transform( -0.00498215, 0.00150865, 0.506779, -0.00217891, 0.501528, 0.00137933, -0.684672, -0.0494129, -0.0534066, 0.000428915, -0.0204139, 0.421566 )
+
+[node name="hand2" type="Spatial" parent="Head/hand3/Spatial/Spatial"]
+transform = Transform( 0.963366, -0.305192, 10.1773, 0.0412008, 4.51007, 0.701075, -4.36371, -0.0247938, 2.25344, 3.79555, -0.164742, 2.11361 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Head/hand3/Spatial/Spatial/hand2"]
+transform = Transform( -0.0722325, -6.1118e-10, 0.567843, -4.42378e-09, 0.1, -1.08033e-07, -0.063391, -3.49246e-10, -0.797027, -0.0261498, 0.0522121, -0.028238 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Spatial3" parent="Head/hand3/Spatial/Spatial/hand2" instance=ExtResource( 8 )]
+transform = Transform( -0.118092, -0.0402746, -0.000386204, -0.000452787, 0.00530373, -0.159348, 0.0096963, -0.0730308, -0.00206724, 0.328664, 0.0707813, -0.37403 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head/hand3/Spatial/Spatial"]
+transform = Transform( 6.45221, 0.311493, 0.288014, 2.98023e-08, 4.00756, 0.0137934, -3.8743e-07, -8.19564e-08, 3.96321, 0.879714, 0.0666986, 0.979533 )
+stream = ExtResource( 10 )
+unit_db = -6.675
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Head/hand3/Spatial/Spatial"]
+stream = ExtResource( 7 )
+
+[node name="Spatial2" parent="Head/hand3/Spatial" instance=ExtResource( 8 )]
+transform = Transform( 0.272306, 0.00945836, -0.00072665, 0.000718466, -0.012791, -0.361225, -0.0184512, 0.537399, 0.0168951, -1.35622, 0.0261913, -0.578898 )
+
+[node name="shotgun" type="Spatial" parent="Head/hand3"]
+transform = Transform( 0.999909, 0.000601452, 0.0135475, -5.2387e-10, 0.999016, -0.0443523, -0.0135608, 0.0443483, 0.998925, -0.456993, 0.271516, 0.294419 )
+
+[node name="sgun4" type="RayCast" parent="Head/hand3/shotgun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000236571, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="sgun2" type="RayCast" parent="Head/hand3/shotgun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.66893e-06, -0.000802923 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="sgun" type="RayCast" parent="Head/hand3/shotgun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0252e-05, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="sgun5" type="RayCast" parent="Head/hand3/shotgun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000319541, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="sgun3" type="RayCast" parent="Head/hand3/shotgun"]
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="sgun6" type="RayCast" parent="Head/hand3/shotgun"]
+transform = Transform( 1, 0, -9.31323e-10, 5.82077e-11, 1, 3.72529e-09, -9.31323e-10, 3.72529e-09, 1, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+anims/death = SubResource( 3 )
+anims/empty = SubResource( 4 )
+anims/grapple = SubResource( 5 )
+anims/nonwall = SubResource( 6 )
+anims/reloading = SubResource( 7 )
+"anims/running wall" = SubResource( 8 )
+anims/shoot = SubResource( 9 )
+anims/swing = SubResource( 10 )
+anims/un_grapple = SubResource( 11 )
+
+[node name="swardcast" type="RayCast" parent="Head"]
+cast_to = Vector3( 0, 0, -1.5 )
+
+[node name="Spatial" parent="Head" instance=ExtResource( 11 )]
+transform = Transform( 0.271537, 0.00374768, 0.084616, 0, 0.284161, -0.0125856, -0.0846991, 0.0120147, 0.271271, 0.87074, -0.108379, -0.384097 )
+
+[node name="aimcast" type="RayCast" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00459921, -0.278704, 0.106365 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.153, 0 )
+shape = SubResource( 12 )
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 120.0
+one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.449
+anchor_top = 0.465
+anchor_right = 0.531
+anchor_bottom = 0.553
+margin_left = 28.224
+margin_top = -3.05176e-05
+margin_right = 0.255981
+margin_bottom = -0.800018
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00887248, 0, -0.258432 )
+stream = ExtResource( 9 )
+
+[node name="bscast" type="RayCast" parent="."]
+transform = Transform( 0.993953, 0, 0.109804, 0, 1, 0, -0.109804, 0, 0.993953, 0.311362, 0.0817871, -0.917277 )
+cast_to = Vector3( 0, 0, -1 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

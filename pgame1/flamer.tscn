@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://flamez.gd" type="Script" id=1]
+[ext_resource path="res://Flame_thrower_bb_loop_crit.wav" type="AudioStream" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 0.25, 0.25, 2 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.123821, 0.119293, 0.992804 )
+
+[sub_resource type="CapsuleShape" id=4]
+radius = 0.91651
+height = 6.09852
+
+[sub_resource type="ParticlesMaterial" id=5]
+direction = Vector3( 0, 0, -1 )
+spread = 8.6
+gravity = Vector3( 0, 1.5, 0 )
+initial_velocity = 10.4
+initial_velocity_random = 0.5
+scale = 0.4
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.933333, 0.462745, 0.101961, 1 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0104382, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Area" type="Area" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.51497 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0405244, 0, -2.58534 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="MeshInstance"]
+wait_time = 0.1
+
+[node name="Particles" type="Particles" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.14413 )
+emitting = false
+amount = 300
+lifetime = 0.8
+randomness = 1.0
+visibility_aabb = AABB( -0.283371, -0.268375, -4.92383, 0.566742, 0.536751, 8 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MeshInstance"]
+stream = ExtResource( 2 )
+volume_db = -5.975
+
+[node name="Timer2" type="Timer" parent="MeshInstance/AudioStreamPlayer"]
+wait_time = 3.0
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -4.62573e-08, 0, 0.618881, 0, 1.0545, 0, -0.283926, 0, -1.00829e-07, -0.00912645, -0.00395012, -0.954115 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0104382, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -4.62573e-08, 1.0545, -4.31656e-08, 0, -1.718e-07, -0.264949, -0.283926, -1.718e-07, 7.03257e-15, -0.00912645, -0.00395012, -0.954115 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance3/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0104382, 0 )
+shape = SubResource( 3 )
+disabled = true
+[connection signal="body_entered" from="MeshInstance/Area" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="MeshInstance/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="MeshInstance/AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="timeout" from="MeshInstance/AudioStreamPlayer/Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="MeshInstance/AudioStreamPlayer/Timer2" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.596078, 0, 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="CapsuleShape" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.120899, -0.992665, 0, 0.992665, 0.120899, 0.00631762, -2.33651, 1.02673 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 0.805904, 0, 0, 0, 0.805904, 0, 0, 0, 0.805904, 0, 1.73937e-07, 1.06762 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="MeshInstance/MeshInstance3"]
+transform = Transform( 1, 0, 0, 0, 0.0405329, -0.999178, 0, 0.999178, 0.0405329, 0, 2.43582e-07, 1.4951 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/MeshInstance3/MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/MeshInstance3/MeshInstance4/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/MeshInstance3/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 0.814652, 0.57995, 0, -0.57995, 0.814652, 0.0157747, -0.36959, -1.78556 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/MeshInstance2/StaticBody"]
+shape = SubResource( 3 )

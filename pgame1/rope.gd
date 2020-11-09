@@ -9,7 +9,7 @@ const SPEED = 0.2
 func _ready():
 	set_as_toplevel(true)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if shoot:	
 		apply_impulse(transform.basis.z, -transform.basis.z * SPEED) 
 
